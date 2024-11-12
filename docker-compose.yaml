@@ -11,19 +11,11 @@ services:
     networks:
       - node-nginx
 
-  # app:
-  #   build:
-  #       context: node
-  #   container_name: app
-  #   networks:
-  #       - node-network
-  #   volumes:
-  #       - ./node:/usr/src/app
-  #   tty: true
   app:
     build:
-      context: node
+      context: ./node
     container_name: app
+    command: sh -c "npm install && node index.js"
     volumes:
       - ./node:/usr/src/app
     networks:
